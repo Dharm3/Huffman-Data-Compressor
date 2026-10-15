@@ -96,48 +96,14 @@ if __name__ == "__main__":
             
             compressed_text = "".join(huffman_codes[char] for char in my_text)
             
-            # 2. Save the true binary file dynamically
             base_name = input_filename.split('.')[0]
             binary_filename = f"{base_name}_compressed.bin"
             
             write_true_binary(binary_filename, compressed_text)
             print(f"Success! True binary saved directly to your project folder as: {binary_filename}")
             
+            #calculating the size of the original and compressed files and displaying the results
             original_bits = len(my_text) * 8
-            compressed_bits = (len(compressed_text) // 8 + (1 if len(compressed_text) % 8 != 0 else 0)) * 8
-            
-            print(f"\nOriginal Size: {original_bits} bits")
-            print(f"New Physical File Size: {compressed_bits} bits")
-            print(f"Hard Drive Space Saved: {100 - (compressed_bits / original_bits * 100):.2f}%")
-            
-    except FileNotFoundError:
-        print(f"Error: Could not find '{input_filename}'.")
-        
-    input_filename = input("Enter the name of the file to compress (e.g., my_data.txt): ")
-
-#calculating the size of the original and compressed files and displaying the results
-    try:
-        my_text = read_file(input_filename)
-        
-        if len(my_text) == 0:
-            print("Error: The file is empty. Please add some text and try again.")
-        else:
-            print(f"\nSuccessfully read {len(my_text)} characters from {input_filename}...")
-            
-            frequencies = get_frequencies(my_text)
-            root_node = build_tree(frequencies)
-            
-            huffman_codes = {}
-            generate_codes(root_node, "", huffman_codes)
-            
-            compressed_text = "".join(huffman_codes[char] for char in my_text)
-            
-            binary_filename = "compressed_output.bin"
-            write_true_binary(binary_filename, compressed_text)
-            print(f"Success! True binary saved directly to your project folder as: {binary_filename}")
-            
-            original_bits = len(my_text) * 8
-                
             compressed_bits = (len(compressed_text) // 8 + (1 if len(compressed_text) % 8 != 0 else 0)) * 8
             
             print(f"\nOriginal Size: {original_bits} bits")
