@@ -106,9 +106,9 @@ if __name__ == "__main__":
             original_bits = len(my_text) * 8
             compressed_bits = (len(compressed_text) // 8 + (1 if len(compressed_text) % 8 != 0 else 0)) * 8
             
-            print(f"\nOriginal Size: {original_bits} bits")
-            print(f"New Physical File Size: {compressed_bits} bits")
-            print(f"Hard Drive Space Saved: {100 - (compressed_bits / original_bits * 100):.2f}%")
+            print(f"\nOriginal File Size: {original_bits} bits")
+            print(f"New File Size: {compressed_bits} bits")
+            print(f"Space Saved: {100 - (compressed_bits / original_bits * 100):.2f}%")
             
     except FileNotFoundError:
         print(f"Error: Could not find '{input_filename}'.")
